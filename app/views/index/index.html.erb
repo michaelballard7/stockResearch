@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  </head>
+  <body>
+
+    <%= stylesheet_link_tag "app.css" %>
+
+    <div class="container">
+
+      <h1 id="header">Asset Tracker</h1>
+
+      <div class="main-content">
+        <div class="search_form">
+          <%= form_tag home_path, :method => 'POST' do %>
+            <%= text_field_tag 'id', nil, placeholder: 'Enter Ticker Symbol', size:50 %>
+            <%= submit_tag 'Submit' %>
+          <% end %>
+        </div>
+
+        <br><br />
+        <% if @stock %>
+          <%= @stock.inspect %>
+        <% elsif @nothing %>
+          <%= @nothing %>
+        <% end  %>
+
+        <br>
+        <!-- <div id="chart-element" style="height: 500px"></div>
+        <script>
+          var parseDate = d3.timeFormat("%Y-%m-%d").parse;
+          const loadDataEndOfDay = d3.csv("<%= asset_path('TWLO.csv') %>", d => ({
+            volume: Number(d.volume),
+            high: Number(d.high),
+            low: Number(d.low),
+            open: Number(d.open),
+            close: Number(d.close)
+          }));
+
+          loadDataEndOfDay.then(data => {
+  // render the chart here
+            console.log(loadDataEndOfDay)
+
+            });
+
+            const xExtent = fc.extentDate()
+            .accessors([d => d.date]);
+            const yExtent = fc.extentLinear()
+              .pad([0.1, 0.1])
+              .accessors([d => d.high, d => d.low]);
+
+            const lineSeries = fc
+              .seriesSvgLine()
+              .mainValue(d => d.high)
+              .crossValue(d => d.date);
+
+            const chart = fc
+              .chartCartesian(d3.scaleTime(), d3.scaleLinear())
+              .yOrient("right")
+              .yDomain(yExtent(data))
+              .xDomain(xExtent(data))
+              .svgPlotArea(lineSeries);
+
+            d3.select("#chart-element")
+              .datum(data)
+              .call(chart);
+
+
+
+        </script> -->
+
+
+      <!-- divmain -->
+      </div>
+
+    </div>
+
+  </body>
+</html>
