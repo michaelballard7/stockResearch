@@ -8,7 +8,13 @@ class IndexController < ApplicationController
       @nothing = 'Please enter a correct symbol'
     elsif
       if params[:id]
-        @stock = StockQuote::Stock.quote(params[:id])
+        begin
+          @stock = StockQuote::Stock.quote(params[:id])
+          @stats = StockQuote::Stock.stats(params[:id])
+          @ohlc = StockQuote::Stock.ohlc(params[:id])
+        rescue StandardError
+          @error = "The chosen ticker does not exist"
+        end
       end
     end
   end

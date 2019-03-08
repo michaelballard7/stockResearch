@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem "stock_quote", '~> 2.0.0'
 gem "d3-rails"
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

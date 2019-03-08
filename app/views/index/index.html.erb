@@ -24,9 +24,62 @@
 
         <br><br />
         <% if @stock %>
-          <%= @stock.inspect %>
+        <span id="company"><h2><%= @stock.company_name %> - <%= @stock.symbol %> </h2></span>
+        <span id="company"><h4>Exchange: <%= @stock.primary_exchange %> | Sector: <%= @stock.sector %></h4></span>
+        <br>
+        <span></span>
+        <!-- <%= @stock.inspect %> -->
+        <%= @stock.inspect  %>
+        <br>
+
+        <br>
+
+        <td><%= @stats.inspect%></td>
+
+        <br>
+        <br>
+
+        <%= @ohlc.inspect %>
+        <br>
+        <br>
+
+        <div class="data-table">
+          <table>
+            <thead>
+              <th> Close </th>
+              <th> Open </th>
+              <th> Daily High </th>
+              <th> Daily Low </th>
+              <th> Latest Volume </th>
+              <th> 52-Week-High </th>
+              <th> 52-Week-Low </th>
+              <th> Avg Volume</th>
+              <th> Short Interest </th>
+              <th> Inst. Ownership </th>
+            </thead>
+            <tr>
+                <td><%= @stock.close %></td>
+                <td><%= @stock.open %></td>
+                <td><%= @stock.high %></td>
+                <td><%= @stock.low %></td>
+                <td><%= @stock.latest_volume %></td>
+                <td><%= @stock.week52_high %></td>
+                <td><%= @stock.week52_low %></td>
+                <td><%= @stock.avg_total_volume %></td>
+                <td><%= @stats.short_interest %></td>
+                <td><%= @stats.institution_percent%>%</td>
+
+
+            </tr>
+          </table>
+        </div>
+
+
         <% elsif @nothing %>
           <%= @nothing %>
+        <% end  %>
+        <% if @error %>
+          <%= @error %>
         <% end  %>
 
         <br>
